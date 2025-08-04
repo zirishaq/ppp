@@ -1,13 +1,18 @@
-name: laravel-absensi-pp
+name: laravel-ppp
 version: latest
 description: Laravel Absensi dengan PHP-FPM dan Nginx
 container:
-  image: alaziz554/absensi-laravel:1.0.18
+  image: zirishaq/ppp:1.0.18
   port: 80
 resources:
   cpu: 1
   memory: 1Gi
   replicas: 1
+dependencies:
+  - name: "postgres"
+    type: "POSTGRESQL"
+    version: "15"
+    storage_size: "2Gi"
 env:
   - name: ADMIN_NAME
     value: admin
@@ -31,25 +36,6 @@ env:
     value: "false"
   - name: DB_CONNECTION
     value: pgsql
-    userManaged: true
-  - name: DB_SSLMODE
-    value: disable
-#insert from github variable/secret
-  - name: DB_HOST
-    value: localhost
-    userManaged: true
-  - name: DB_DATABASE
-    value: absensi
-    userManaged: true
-  - name: DB_USERNAME
-    value: postgres
-    userManaged: true
-  - name: DB_PASSWORD
-    value: postgres
-    userManaged: true
-  - name: DB_PORT
-    value: 5432
-    userManaged: true
 
 envMap:
     domain_env: APP_URL
