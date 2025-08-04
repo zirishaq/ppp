@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: ghcr.io/gonjali/absensi-laravel
+  REGISTRY: ghcr.io/zirishaq/ppp
   GH_REGISTRY: ghcr.io
-  IMAGE_NAME: absensi-laravel
+  IMAGE_NAME: ppp
   DOCKER_BUILDKIT: 1
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
         with:
           registry: ${{ env.GH_REGISTRY }}
           username: ${{ github.actor }}
-          password: ${{ secrets.GIT_TOKEN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
